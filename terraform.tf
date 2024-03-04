@@ -15,13 +15,13 @@ provider "aws" {
   region = "ap-south-1"
 }
 # Creating a VPC
-resource "aws_vpc" "proj-vpc" {
+resource "aws_vpc" "my-vpc" {
  cidr_block = "10.0.0.0/16"
 }
 
 # Create an Internet Gateway
 resource "aws_internet_gateway" "proj-ig" {
- vpc_id = aws_vpc.proj-vpc.id
+ vpc_id = aws_vpc.my-vpc.id
  tags = {
  Name = "gateway1"
  }
@@ -29,7 +29,7 @@ resource "aws_internet_gateway" "proj-ig" {
 
 # Setting up the route table
 resource "aws_route_table" "proj-rt" {
- vpc_id = aws_vpc.proj-vpc.id
+ vpc_id = aws_vpc.my-vpc.id
  route {
  # pointing to the internet
  cidr_block = "0.0.0.0/0"
@@ -46,7 +46,7 @@ resource "aws_route_table" "proj-rt" {
 
 # Setting up the subnet
 resource "aws_subnet" "proj-subnet" {
- vpc_id = aws_vpc.proj-vpc.id
+ vpc_id = aws_vpc.my-vpc.id
  cidr_block = "10.0.1.0/24"
  availability_zone = "ap-south-1b"
  tags = {
@@ -64,7 +64,7 @@ route_table_id = aws_route_table.proj-rt.id
 resource "aws_security_group" "proj-sg" {
  name = "proj-sg"
  description = "Enable web traffic for the project"
- vpc_id = aws_vpc.proj-vpc.id
+ vpc_id = aws_vpc.my-vpc.id
  ingress {
     from_port   = 0
     to_port     = 0
