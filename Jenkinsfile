@@ -39,6 +39,12 @@ pipeline{
                sh 'docker build -t manasabanking .'
            }
          }
+        stage('push dockerhub'){
+            withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+        // some block
+        }
+            sh 'docker login -u cvmanasa -p ${dockerhub}'
+        }
         stage('port expose'){
             steps{
                 sh 'docker run -dt -p 8091:8091 --name c000 myimg'
