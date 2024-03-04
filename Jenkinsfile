@@ -7,6 +7,12 @@ pipeline{
                  echo 'github url checkout'
             }
         }
+        stage('HTML Report'){
+            steps{
+                echo 'Generating HTML Report'
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Banking/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+            }
+        }
         stage('codecompile'){
             steps{
                 echo 'starting compiling'
