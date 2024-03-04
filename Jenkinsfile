@@ -42,7 +42,7 @@ pipeline{
         stage('push dockerhub'){
             steps{
                 withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-                  sh "docker login -u cvmanasa -p ${dockerhub}"
+                  sh "docker login -u cvmanasa -p Manasa@24"
                   sh "docker push manasabanking"
                 }
             }
