@@ -34,9 +34,9 @@ pipeline{
                 sh 'mvn package'
             }
         }
-        stage('run dockerfile'){
+        stage('build docker image'){
           steps{
-               sh 'docker build -t myimg .'
+               sh 'docker build -t manasabanking .'
            }
          }
         stage('port expose'){
