@@ -3,13 +3,14 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.0"
+      version = "~> 4.16"
     }
   }
 }
 
 # Configure the AWS provider
 provider "aws" {
+  profile = "default"
   region = "ap-south-1"
 }
 # Creating a VPC
