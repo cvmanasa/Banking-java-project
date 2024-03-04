@@ -40,10 +40,11 @@ pipeline{
            }
          }
         stage('push dockerhub'){
-            withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-        // some block
-        }
-            sh 'docker login -u cvmanasa -p ${dockerhub}'
+            steps{
+                withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
+                  sh 'docker login -u cvmanasa -p ${dockerhub}'
+                }
+            }
         }
         stage('port expose'){
             steps{
