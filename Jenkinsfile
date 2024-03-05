@@ -48,7 +48,7 @@ pipeline{
         }
         stage('port expose'){
             steps{
-                sh 'docker run -dt -p 8084:8084 --name c01 manasabanking'
+                sh 'docker run -dt -p 8084:8084 --name c02 manasabanking'
             }
         }   
     }
