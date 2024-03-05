@@ -36,7 +36,7 @@ pipeline{
         }
         stage('build docker image'){
           steps{
-               sh 'docker build -t manasabanking .'
+               sh 'docker build -t manasa_banking .'
            }
          }
         stage('push dockerhub'){
@@ -48,7 +48,7 @@ pipeline{
         }
         stage('port expose'){
             steps{
-                sh 'docker run -dt -p 8084:8084 --name c02 manasabanking'
+                sh 'docker run -dt -p 8084:8084 --name c001 manasa_banking'
             }
         }   
     }
