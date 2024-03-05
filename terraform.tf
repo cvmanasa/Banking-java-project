@@ -141,7 +141,7 @@ resource "aws_instance" "Prod-Server" {
      sudo apt-get update -y
      sudo apt install docker.io -y
      sudo systemctl enable docker
-     sudo docker run -itd -p 8084:8084 manasabanking
+     sudo docker run -itd -p 8084:8084 manasa_banking
      sudo docker start $(docker ps -aq)
  EOF
  tags = {
